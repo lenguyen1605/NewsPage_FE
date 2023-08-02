@@ -1,4 +1,5 @@
 import React from 'react';
+import Signup from './signup';
 // import background from "./webbg.jpg"
 import {
     Nav,
@@ -23,6 +24,7 @@ export default function NavBar() {
                 <NavLink to="/">Economics</NavLink>
                 <NavLink to="/">Science</NavLink>
                 <NavLink to="/">Tech</NavLink>
+                {/* <NavLink to="./signup">Sign up</NavLink> */}
             </NavMenu>
         </Nav>
         </div>
