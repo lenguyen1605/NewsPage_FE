@@ -9,6 +9,9 @@ function ServiceGeneratorDM_Filter() {
     return {
         Set: (data) => {
             return post('Signup', data)
+        },
+        GetAllPosts: (data) => {
+            return get('getAllPost',data)
         }
     }
 }
