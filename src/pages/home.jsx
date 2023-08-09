@@ -23,16 +23,20 @@ const Home = () => {
     renderForm();
   }, []);
 
+  const dateconverter = (fullDate) => {
+    // Assuming fullDate is in the format 'YYYY-MM-DD'
+    const dateObject = new Date(fullDate);
+    const day = dateObject.getDate();
+    const month = dateObject.getMonth() + 1; // Months are zero-based
+    const year = dateObject.getFullYear();
+  
+    // Create formatted date string in 'dd-mm-yyyy' format
+    const formattedDate = `${day < 10 ? '0' : ''}${day}-${month < 10 ? '0' : ''}${month}-${year}`
+    return (formattedDate)
+  }
 
-  const header = (
-    <img alt="Card" src="https://primefaces.org/cdn/primereact/images/usercard.png" />
-  );
-  const footer = (
-      <div className="flex flex-wrap justify-content-end gap-2">
-          {/* <Button label="Save" icon="pi pi-check" /> */}
-          <Button  label="Read more" className="p-button-outlined p-button-secondary" />
-      </div>
-  );
+  const navigate = useNavigate()
+  
 
   return (
     <div className="row">
