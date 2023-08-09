@@ -38,7 +38,7 @@
   }
   
   @media screen and (max-width: 600px) {
-    .topnav.responsive {position: relative;}
+    .topnav.responsive {position: relative; }
     .topnav.responsive .icon {
       position: absolute;
       right: 0;
@@ -56,6 +56,11 @@
     float: left;
     width: 30%;
     padding: 0 10px;
+    /* display: grid; */
+  }
+
+  .fonthead{
+    font-size: 30px;
   }
   
   /* Remove extra left and right margins, due to padding in columns */
@@ -74,6 +79,10 @@
     padding: 3px;
     text-align: center;
     background-color: #f1f1f1;
+    min-height: 200px;
+    /* height: 100%; */
+    overflow: hidden;
+
   }
   
   /* Responsive columns - one column layout (vertical) on small screens */
@@ -82,6 +91,9 @@
       width: 100%;
       display: block;
       margin-bottom: 20px;
+    }
+    .fonthead {
+        font-size: 20px;
     }
   }
 

@@ -3,51 +3,76 @@ import { UserService } from '../services/users.service'
 import 'primeicons/primeicons.css';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
-import './styles.css'
-
+import './styles.css';
+import { useNavigate } from "react-router-dom";
+// import Detail from './postdetail';
+// import { Route, Routes } from "react-router-dom";
+import {useParams, Link} from "react-router-dom";
 
 const Home = () => {
 
   const [allPosts,setAllPosts] = useState([])
+  const [visible, setVisible] = useState(false)
 
   const renderForm = async () => {
-    let res = await UserService.NewUser.GetAllPosts()
+    let res = await UserService.Posts.GetAllPosts()
     setAllPosts(res)
-    // console.log('res',res);
-    // console.log('allPosts',res[0]?.author_name);
   };
   
   useEffect(() => {
     renderForm();
   }, []);
 
+  const navigate = useNavigate();
+  const params = useParams();
 
   const header = (
     <img alt="Card" src="https://primefaces.org/cdn/primereact/images/usercard.png" />
   );
-  const footer = (
-      <div className="flex flex-wrap justify-content-end gap-2">
-          {/* <Button label="Save" icon="pi pi-check" /> */}
-          <Button  label="Read more" className="p-button-outlined p-button-secondary" />
-      </div>
-  );
+
+  const dateconverter = (fullDate) => {
+    const dateObject = new Date(fullDate);
+    const day = dateObject.getDate();
+    const month = dateObject.getMonth() + 1; // Months are zero-based
+    const year = dateObject.getFullYear();
+  
+    // Create formatted date string in 'dd-mm-yyyy' format
+    const formattedDate = `${day < 10 ? '0' : ''}${day}-${month < 10 ? '0' : ''}${month}-${year}`
+    return (formattedDate)
+  }
 
   return (
-    <div className="row">
-        {allPosts.map((post,idx)=>{
-            return (
-                <div className='column'>
-                    <Card title={post?.title} subTitle={post?.author_name} footer={footer} header={header} className="card" style={{marginLeft: '10%', marginTop: '2%', display: 'inline-block'}}>
-                        <p className="" style={{fontSize:'95%', marginTop:'3px'}}>
-                            {post.summary}
-                        </p>
-                    </Card>
-                </div>
-            )
-        })}
-    </div>
-        
+    <>
+        <div className="row">
+            {allPosts.map((post,idx)=>{
+                return (
+                    <div className='column'>
+                        <Card title={post?.title} subTitle={`${post?.author_name}` +" "+ `${dateconverter(post?.date_created)}`} 
+                            footer={()=>{
+                                return (
+                                    <div className="flex flex-wrap justify-content-end gap-2">
+                                        {/* <Link to={`/postdetail/${post.id}`}>
+                                            <Button  label="Read more" className="p-button-outlined p-button-secondary"/>
+                                        </Link> */}
+                                        <Button  label="Read more" className="p-button-outlined p-button-secondary" onClick={()=>{
+                                            navigate(`/postdetail/${post.id}`);
+                                        }}/>
+                                    </div>
+                                )
+                            }} 
+                            header={header} className="card" style={{marginLeft: '10%', marginTop: '2%'}}>
+                            <p className="" style={{fontSize:'95%', marginTop:'3px', overflow:'auto'}}>
+                                {post.summary}
+                            </p>
+                        </Card>
+                    </div>
+                )
+            })}
+        </div>
+    </>
+    
   )
 };
+
   
 export default Home;
