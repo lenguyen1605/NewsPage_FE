@@ -12,6 +12,9 @@ function ServiceGeneratorDM_Filter() {
         },
         GetAllPosts: (data) => {
             return get('getAllPost',data)
+        },
+        SetPost: (data) => {
+            return post('setPost', data)
         }
     }
 }

@@ -23,7 +23,7 @@ const Home = () => {
 
 
   const header = (
-    <img alt="Card" src="https://primefaces.org/cdn/primereact/images/usercard.png" />
+    <img alt="Card" src="https://www.etonline.com/sites/default/files/styles/840x470/public/images/2020-06/1280bey2013.jpg?h=c673cd1c&itok=E_fprIAn" />
   );
   const footer = (
       <div className="flex flex-wrap justify-content-end gap-2">
@@ -36,8 +36,11 @@ const Home = () => {
     <div className="row">
         {allPosts.map((post,idx)=>{
             return (
-                <div className='column'>
-                    <Card title={post?.title} subTitle={post?.author_name} footer={footer} header={header} className="card" style={{marginLeft: '10%', marginTop: '2%', display: 'inline-block'}}>
+                <div className='column' style={{display: 'flex'}}>
+                    <Card title={post?.title} subTitle={post?.author_name} footer={footer} 
+                    header={() => {return (
+                      <img alt="Card" src={post?.image}></img>
+                    )}} className="card" style={{marginLeft: '10%', marginTop: '2%', display: 'inline-block'}}>
                         <p className="" style={{fontSize:'95%', marginTop:'3px'}}>
                             {post.summary}
                         </p>

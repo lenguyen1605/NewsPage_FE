@@ -3,7 +3,7 @@ const Entertainment = () => {
   return (
   <>
      <h1 style={{color:"green"}}>
-         entertainment</h1>
+         Entertainment</h1>
    <div> . </div>
    <div> . </div>
    <div> . </div>
