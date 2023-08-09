@@ -3,18 +3,20 @@ import { UserService } from '../services/users.service'
 import 'primeicons/primeicons.css';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
-import './styles.css'
-
+import './styles.css';
+import { useNavigate } from "react-router-dom";
+// import Detail from './postdetail';
+// import { Route, Routes } from "react-router-dom";
+import {useParams, Link} from "react-router-dom";
 
 const Home = () => {
 
   const [allPosts,setAllPosts] = useState([])
+  const [visible, setVisible] = useState(false)
 
   const renderForm = async () => {
-    let res = await UserService.NewUser.GetAllPosts()
+    let res = await UserService.Posts.GetAllPosts()
     setAllPosts(res)
-    // console.log('res',res);
-    // console.log('allPosts',res[0]?.author_name);
   };
   
   useEffect(() => {
@@ -23,7 +25,7 @@ const Home = () => {
 
 
   const header = (
-    <img alt="Card" src="https://www.etonline.com/sites/default/files/styles/840x470/public/images/2020-06/1280bey2013.jpg?h=c673cd1c&itok=E_fprIAn" />
+    <img alt="Card" src="https://primefaces.org/cdn/primereact/images/usercard.png" />
   );
   const footer = (
       <div className="flex flex-wrap justify-content-end gap-2">
@@ -34,23 +36,37 @@ const Home = () => {
 
   return (
     <div className="row">
-        {allPosts.map((post,idx)=>{
-            return (
-                <div className='column' style={{display: 'flex', minHeight: '700px'}}>
-                    <Card title={post?.title} subTitle={post?.author_name} footer={footer} 
-                    header={() => {return (
-                      <img alt="Card" src={post?.image}></img>
-                    )}} className="card" style={{marginLeft: '10%', marginTop: '2%', display: 'inline-block'}}>
-                        <p className="" style={{fontSize:'95%', marginTop:'3px'}}>
-                            {post.summary}
-                        </p>
-                    </Card>
-                </div>
-            )
-        })}
-    </div>
+            {allPosts.map((post,idx)=>{
+                return (
+                    <div className='column'>
+                        <Card title={post?.title} subTitle={`${post?.author_name}` +" "+ `${dateconverter(post?.date_created)}`} 
+                            footer={()=>{
+                                return (
+                                    <div className="flex flex-wrap justify-content-end gap-2">
+                                        {/* <Link to={`/postdetail/${post.id}`}>
+                                            <Button  label="Read more" className="p-button-outlined p-button-secondary"/>
+                                        </Link> */}
+                                        <Button  label="Read more" className="p-button-outlined p-button-secondary" onClick={()=>{
+                                            navigate(`/postdetail/${post.id}`);
+                                        }}/>
+                                    </div>
+                                )
+                            }} 
+                            header={() => {return (
+                                <img alt="Card" src={post?.image}></img>
+                              )}}
+                            className="card" style={{marginLeft: '10%', marginTop: '2%'}}>
+                            <p className="" style={{fontSize:'95%', marginTop:'3px', overflow:'auto'}}>
+                                {post.summary}
+                            </p>
+                        </Card>
+                    </div>
+                )
+            })}
+        </div>
         
   )
 };
+
   
 export default Home;
