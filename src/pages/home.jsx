@@ -36,7 +36,7 @@ const Home = () => {
     <div className="row">
         {allPosts.map((post,idx)=>{
             return (
-                <div className='column' style={{display: 'flex'}}>
+                <div className='column' style={{display: 'flex', minHeight: '700px'}}>
                     <Card title={post?.title} subTitle={post?.author_name} footer={footer} 
                     header={() => {return (
                       <img alt="Card" src={post?.image}></img>
