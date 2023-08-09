@@ -14,7 +14,8 @@ import {
 import Entertainment from "./categories/entertainment";
 import Health from "./categories/health";
 import Home from "./home";
-import Sports from "./categories/sports"
+import Sports from "./categories/sports";
+import NewPost from "./categories/newpost"
 // import Hamburger from '../menu.png'
 import 'primeicons/primeicons.css';
 import "./styles.css"
@@ -73,7 +74,7 @@ export default function NavBar() {
                     </NavLink>
                 </div>
                 <div style={{ margin: '10px' }}>
-                    <NavLink to="/" style={({ isActive }) => ({ 
+                    <NavLink to="/techsci" style={({ isActive }) => ({ 
                         color: isActive ? '#E9967A' : 'white' })}>
                         Technology and Science
                     </NavLink>
@@ -88,6 +89,7 @@ export default function NavBar() {
                 <Route exact path="/entertainment" element={<Entertainment />} />
                 <Route exact path="/health" element={<Health />} />
                 <Route exact path="/sports" element={<Sports />} />
+                <Route exact path="/newpost" element={<NewPost />} />
             </Routes>
 
         </div>

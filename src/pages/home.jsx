@@ -23,27 +23,19 @@ const Home = () => {
     renderForm();
   }, []);
 
-  const navigate = useNavigate();
-  const params = useParams();
 
   const header = (
     <img alt="Card" src="https://primefaces.org/cdn/primereact/images/usercard.png" />
   );
-
-  const dateconverter = (fullDate) => {
-    const dateObject = new Date(fullDate);
-    const day = dateObject.getDate();
-    const month = dateObject.getMonth() + 1; // Months are zero-based
-    const year = dateObject.getFullYear();
-  
-    // Create formatted date string in 'dd-mm-yyyy' format
-    const formattedDate = `${day < 10 ? '0' : ''}${day}-${month < 10 ? '0' : ''}${month}-${year}`
-    return (formattedDate)
-  }
+  const footer = (
+      <div className="flex flex-wrap justify-content-end gap-2">
+          {/* <Button label="Save" icon="pi pi-check" /> */}
+          <Button  label="Read more" className="p-button-outlined p-button-secondary" />
+      </div>
+  );
 
   return (
-    <>
-        <div className="row">
+    <div className="row">
             {allPosts.map((post,idx)=>{
                 return (
                     <div className='column'>
@@ -60,7 +52,10 @@ const Home = () => {
                                     </div>
                                 )
                             }} 
-                            header={header} className="card" style={{marginLeft: '10%', marginTop: '2%'}}>
+                            header={() => {return (
+                                <img alt="Card" src={post?.image}></img>
+                              )}}
+                            className="card" style={{marginLeft: '10%', marginTop: '2%'}}>
                             <p className="" style={{fontSize:'95%', marginTop:'3px', overflow:'auto'}}>
                                 {post.summary}
                             </p>
@@ -69,8 +64,7 @@ const Home = () => {
                 )
             })}
         </div>
-    </>
-    
+        
   )
 };
 

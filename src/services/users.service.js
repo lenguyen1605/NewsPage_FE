@@ -21,6 +21,9 @@ function ServiceGeneratorDM_Post() {
         },
         GetPostByID: (id) => {
             return get('getPostbyID' + "?id=" + id)
+        },
+        SetPost: (data) => {
+            return post('setPost', data)
         }
     }
 }

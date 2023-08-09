@@ -3,6 +3,8 @@ import NavBar from './navbar'
 import Home from './home'
 import './styles.css'
 import { UserService } from '../services/users.service'
+import { Link } from 'react-router-dom'
+import { Button } from 'primereact/button'; 
 export default function MainHeader() {
     const [userData, setUserData] = useState({
         email: '',
@@ -36,8 +38,15 @@ export default function MainHeader() {
                 </div>
             </div> */}
             <div>
-                <div style={{textShadow: '4px 4px 4px rgba(255, 192, 203, 1)', fontSize:42, fontWeight: 'bold',
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+            <div style={{textShadow: '4px 4px 4px rgba(255, 192, 203, 1)', fontSize:42, fontWeight: 'bold',
             marginLeft: '10%', marginTop: '2%', marginBottom: '2%'}}>NewsNewsNews</div>
+            <div style={{marginLeft: '40%'}}>
+                <Link to="/newpost">
+                <Button label="Add new" link icon="pi pi-plus" style={{color: 'black'}}></Button>
+                </Link>
+                </div>
+            </div>
             </div>
             <div>
                 <NavBar></NavBar>
