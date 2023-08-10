@@ -7,7 +7,7 @@ const NewPost = () => {
     const categories = [
         {name: 'Entertainment', key: 'entertainment'},
         {name: 'Health', key: 'health'},
-        {name: 'Sports', key: 'sport'},
+        {name: 'Sports', key: 'sports'},
         {name: 'Technology and Science', key: 'techandsci'},
     ]
     const [selectedCategories, setSelectedCategories] = useState([])
@@ -40,7 +40,7 @@ const NewPost = () => {
         let cats = selectedCategories.map(item => item.key)
         data.categories = cats
         console.log("data...", data)
-        let res = await UserService.NewUser.SetPost(data)
+        let res = await UserService.Posts.SetPost(data)
     }
     return (
     <>
@@ -79,6 +79,7 @@ const NewPost = () => {
             <input type="text" name="Image" style={{marginLeft: '0.75%', width: '50%', height: '30px',
         borderRadius: 3}} value={data?.image} onChange={(e) => setForm("image", e.target.value)}></input></div>
             <button style={{marginLeft: '50%', height: '35px', width: '80px'}} onClick={(e) => {
+                // e.preventDefault()
                 handleSubmit();
             }}>Submit</button>
             {/* <Button label="Check" onClick={() => console.log(cats)}></Button> */}

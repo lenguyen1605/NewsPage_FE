@@ -20,6 +20,7 @@ import NewPost from "./categories/newpost"
 import 'primeicons/primeicons.css';
 import "./styles.css"
 import { Button } from "primereact/button";
+import TechSci from './categories/techsci';
 
 
 export default function NavBar() {
@@ -89,6 +90,7 @@ export default function NavBar() {
                 <Route exact path="/entertainment" element={<Entertainment />} />
                 <Route exact path="/health" element={<Health />} />
                 <Route exact path="/sports" element={<Sports />} />
+                <Route exact path="/techsci" element={<TechSci/>}/>
                 <Route exact path="/newpost" element={<NewPost />} />
             </Routes>
 

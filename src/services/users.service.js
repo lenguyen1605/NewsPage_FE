@@ -24,6 +24,9 @@ function ServiceGeneratorDM_Post() {
         },
         SetPost: (data) => {
             return post('setPost', data)
+        },
+        GetPostByCategory: (category) => {
+            return get('getPostByCategory' + "?category=" + category)
         }
     }
 }

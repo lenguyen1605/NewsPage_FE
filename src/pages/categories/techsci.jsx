@@ -5,12 +5,12 @@ import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import '../styles.css'
 import { useNavigate } from "react-router-dom";
-const Sports = () => {
+const TechSci = () => {
   const [allPosts,setAllPosts] = useState([])
   const [visible, setVisible] = useState(false)
 
   const renderForm = async () => {
-    let res = await UserService.Posts.GetPostByCategory('sports')
+    let res = await UserService.Posts.GetPostByCategory('techandsci')
     setAllPosts(res)
   };
   
@@ -67,4 +67,4 @@ const Sports = () => {
   )
 };
   
-export default Sports;
+export default TechSci;
