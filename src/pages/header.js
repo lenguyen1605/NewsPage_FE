@@ -37,20 +37,23 @@ export default function MainHeader() {
                     <div style={{color: 'white', fontWeight: 'bold'}}>Breaking</div>
                 </div>
             </div> */}
+
             <div>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-            <div style={{textShadow: '4px 4px 4px rgba(255, 192, 203, 1)', fontSize:42, fontWeight: 'bold',
-            marginLeft: '10%', marginTop: '2%', marginBottom: '2%'}}>NewsNewsNews</div>
-            <div style={{marginLeft: '40%'}}>
-                <Link to="/newpost">
-                <Button label="Add new" link icon="pi pi-plus" style={{color: 'black'}}></Button>
-                </Link>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <div style={{textShadow: '4px 4px 4px rgba(255, 192, 203, 1)', fontSize:42, fontWeight: 'bold',
+                        marginLeft: '10%', marginTop: '2%', marginBottom: '2%'}}>NewsNewsNews
+                    </div>
+                    <div style={{marginLeft: '40%'}}>
+                        <Link to="/newpost">
+                            <Button label="Add new" link icon="pi pi-plus" style={{color: 'black'}}></Button>
+                        </Link>
+                    </div>
                 </div>
-            </div>
             </div>
             <div>
                 <NavBar></NavBar>
             </div>
+
             {/* <div>
                 <button onClick={() => setFormVisible(!formvisible)
                 }>Signup</button>

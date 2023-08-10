@@ -19,13 +19,36 @@ const Detail = () => {
         renderForm();
     }, [id]);
 
+    const dateconverter = (fullDate) => {
+        // Assuming fullDate is in the format 'YYYY-MM-DD'
+        const dateObject = new Date(fullDate);
+        const day = dateObject.getDate();
+        const month = dateObject.getMonth() + 1; // Months are zero-based
+        const year = dateObject.getFullYear();
+      
+        // Create formatted date string in 'dd-mm-yyyy' format
+        const formattedDate = `${day < 10 ? '0' : ''}${day}-${month < 10 ? '0' : ''}${month}-${year}`
+        return (formattedDate)
+      }
+    
     return (
-    <>
-        <h1 className= "fonthead" style ={{marginRight: '20%', marginLeft: '10%'}}>
-            
+    <div style ={{marginRight: '30%', marginLeft: '10%'}}>
+        <h1 className= "fonthead">
             {thisPost.title}
         </h1>
-    </>
+        <div style = {{color: 'gray'}}>
+            <div>Written by {thisPost.author_name}</div>
+            <div>Published on {dateconverter(thisPost.date_created)}</div>
+        </div>
+        <br/>
+        <div><img alt="Card" style={{maxWidth: '90%'}} src={thisPost?.image}></img></div>
+        <br/>
+        <div className='para'>
+            {thisPost.content}
+        </div>
+        <br/>
+
+    </div>
     )
 };
   
