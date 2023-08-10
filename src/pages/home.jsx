@@ -59,7 +59,7 @@ const Home = () => {
                             header={() => {return (
                                 <img alt="Card" src={post?.image}></img>
                               )}}
-                            className="card" style={{marginLeft: '10%', marginTop: '2%'}}>
+                            className="card" style={{marginLeft: '10%', marginTop: '2%', height: "680px", minHeight: "680px"}}>
                             <p className="" style={{fontSize:'95%', marginTop:'3px', overflow:'auto'}}>
                                 {post.summary}
                             </p>
