@@ -21,7 +21,7 @@ import 'primeicons/primeicons.css';
 import "./styles.css"
 import { Button } from "primereact/button";
 import TechSci from './categories/techsci';
-
+import SignIn from './signin';
 
 export default function NavBar() {
     // const responsive = ()=> {
@@ -92,6 +92,7 @@ export default function NavBar() {
                 <Route exact path="/sports" element={<Sports />} />
                 <Route exact path="/techsci" element={<TechSci/>}/>
                 <Route exact path="/newpost" element={<NewPost />} />
+                <Route exact path="/signin" element={<SignIn/>}/>
             </Routes>
 
         </div>

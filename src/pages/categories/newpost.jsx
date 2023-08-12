@@ -1,8 +1,9 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Checkbox } from "primereact/checkbox";
 import { UserService } from '../../services/users.service';
 import { Button } from 'primereact/button'; 
+import jwt from 'jwt-decode'
 const NewPost = () => {
     const categories = [
         {name: 'Entertainment', key: 'entertainment'},
@@ -18,8 +19,27 @@ const NewPost = () => {
         'likes': 0,
         'title': '',
         'summary': '',
-        'image': ''
+        'image': '',
+        'id_author': ''
+        // 'author_name': ''
     })
+
+    useEffect(() => {
+        const token = localStorage.getItem("_TOKEN")
+        if (token) {
+            try {
+                const decodedToken = jwt(token)
+                if (decodedToken) {
+                    console.log("decoded successfully", decodedToken)
+                    data.id_author = decodedToken?.id_user
+                   
+                }
+            }
+            catch (error) {
+                console.error('Error decoding')
+            }
+        }
+    }, [])
 
     const onCategoryChange = (e) => {
         let _selectedCategories = [...selectedCategories];
@@ -42,6 +62,8 @@ const NewPost = () => {
         console.log("data...", data)
         let res = await UserService.Posts.SetPost(data)
     }
+
+
     return (
     <>
         <h1 style={{color:"black", fontSize: 25, marginLeft: '3%'}}>
@@ -79,7 +101,7 @@ const NewPost = () => {
             <input type="text" name="Image" style={{marginLeft: '0.75%', width: '50%', height: '30px',
         borderRadius: 3}} value={data?.image} onChange={(e) => setForm("image", e.target.value)}></input></div>
             <button style={{marginLeft: '50%', height: '35px', width: '80px'}} onClick={(e) => {
-                // e.preventDefault()
+                e.preventDefault()
                 handleSubmit();
             }}>Submit</button>
             {/* <Button label="Check" onClick={() => console.log(cats)}></Button> */}
