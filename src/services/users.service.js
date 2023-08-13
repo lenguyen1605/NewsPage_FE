@@ -10,6 +10,9 @@ function ServiceGeneratorDM_Filter() {
     return {
         Set: (data) => {
             return post('Signup', data)
+        },
+        SignIn: (data) => {
+            return post('Signin', data)
         }
     }
 }
