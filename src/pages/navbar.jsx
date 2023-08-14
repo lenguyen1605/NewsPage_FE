@@ -52,31 +52,31 @@ export default function NavBar() {
                 
                 <div style={{ margin: '10px' }} className='active'>
                     <NavLink to="/" style={({ isActive }) => ({ 
-                        color: isActive ? '#E9967A' : 'white' })}>
+                        color: isActive ? 'rgba(255, 192, 203, 1)' : 'white' })}>
                         Home
                     </NavLink>
                 </div>
                 <div style={{ margin: '10px' }} >
                     <NavLink to="/entertainment" style={({ isActive }) => ({ 
-                        color: isActive ? '#E9967A' : 'white' })}>
+                        color: isActive ? 'rgba(255, 192, 203, 1)' : 'white' })}>
                         Entertainment
                     </NavLink>
                 </div>
                 <div style={{ margin: '10px' }}>
                     <NavLink to="/health" style={({ isActive }) => ({ 
-                        color: isActive ? '#E9967A' : 'white' })}>
+                        color: isActive ? 'rgba(255, 192, 203, 1)' : 'white' })}>
                         Health
                     </NavLink>
                 </div>
                 <div style={{ margin: '10px' }}>
                     <NavLink to="/sports" style={({ isActive }) => ({ 
-                        color: isActive ? '#E9967A' : 'white' })}>
+                        color: isActive ? 'rgba(255, 192, 203, 1)' : 'white' })}>
                         Sports
                     </NavLink>
                 </div>
                 <div style={{ margin: '10px' }}>
                     <NavLink to="/techsci" style={({ isActive }) => ({ 
-                        color: isActive ? '#E9967A' : 'white' })}>
+                        color: isActive ? 'rgba(255, 192, 203, 1)' : 'white' })}>
                         Technology and Science
                     </NavLink>
                 </div>

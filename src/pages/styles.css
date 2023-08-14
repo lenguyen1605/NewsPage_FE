@@ -30,8 +30,31 @@
   }
 
   .para {
-    white-space: pre-wrap;
+    white-space: pre-line;
     text-align: justify;
+  }
+
+  .icon-container {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .icon-container i {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+  }
+  
+  .icon-container i:nth-child(2) {
+    display: none; 
+  }
+  
+  .icon-container:hover i:nth-child(1) {
+    display: none;
+  }
+  
+  .icon-container:hover i:nth-child(2) {
+    display: block;
   }
   
   @media screen and (max-width: 600px) {
