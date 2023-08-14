@@ -5,6 +5,7 @@ import { UserService } from '../../services/users.service';
 import { Button } from 'primereact/button'; 
 import jwt from 'jwt-decode'
 const NewPost = () => {
+    const [refresh, setRefresh] = useState(false)
     const categories = [
         {name: 'Entertainment', key: 'entertainment'},
         {name: 'Health', key: 'health'},
@@ -61,6 +62,7 @@ const NewPost = () => {
         data.categories = cats
         console.log("data...", data)
         let res = await UserService.Posts.SetPost(data)
+
     }
 
 
@@ -101,7 +103,6 @@ const NewPost = () => {
             <input type="text" name="Image" style={{marginLeft: '0.75%', width: '50%', height: '30px',
         borderRadius: 3}} value={data?.image} onChange={(e) => setForm("image", e.target.value)}></input></div>
             <button style={{marginLeft: '50%', height: '35px', width: '80px'}} onClick={(e) => {
-                e.preventDefault()
                 handleSubmit();
             }}>Submit</button>
             {/* <Button label="Check" onClick={() => console.log(cats)}></Button> */}
