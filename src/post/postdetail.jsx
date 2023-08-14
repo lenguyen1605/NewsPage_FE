@@ -2,10 +2,13 @@ import {React, useEffect, useState} from 'react';
 // import {useLocation} from 'react-router-dom';
 import {useParams} from "react-router-dom";
 import { UserService } from '../services/users.service'
-import './styles.css'
+import '../pages/styles.css'
 import { Button } from 'primereact/button';
 import 'primeicons/primeicons.css';
 import { icons } from 'react-icons';
+
+import Comment from './comment';
+// import useNode from './useNode';
 
 const Detail = () => {
     const { id } = useParams();
@@ -47,6 +50,56 @@ const Detail = () => {
         console.log(like);
         console.log(likeClicked);
     };
+
+    const comments = [
+        {
+            id_post: 1,
+            id_comment: 1,
+            items: [
+                {
+                    id_comment: 193923,
+                    content: 'laughing',
+                    items: [
+                        {
+                            id_comment: 243565,
+                            content: 'hihi',
+                            items: [
+                                {
+                                    id_comment: 945675,
+                                    content: 'haha'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id_comment: 455678,
+                    content: 'crying',
+                    items: [
+                        {
+                            id_comment: 987654,
+                            content: 'huhu'
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+    const[commentsData, setCommentsData] = useState(comments)
+    // const {insertNode, editNode, deleteNode} = useNode();
+    // const handleInsertNode = (folderId, item) => {
+    //     const finalStructure = insertNode(commentsData, folderId, item);
+    //     setCommentsData(finalStructure)
+    // }
+    // const handleEditNode = (folderId, value) => {
+    //     const finalStructure = editNode(commentsData, folderId, value);
+    //     setCommentsData(finalStructure)
+    // }
+    // const handleDelete = (folderId) => {
+    //     const finalStructure = deleteNode(commentsData, folderId);
+    //     const temp = {...finalStructure}
+    //     setCommentsData(temp)
+    // }
     
     return (
     <div style ={{marginRight: '30%', marginLeft: '10%'}}>
@@ -64,15 +117,8 @@ const Detail = () => {
             {thisPost.content}
         </div>
             <br/>
-        <div>
-            {/* <Button icon= 'pi pi-thumbs-up' rounded text className="bg-bluegray-600 hover:bg-bluegray-400 border-bluegray-700"
-                onClick={like_count}
-            >    {like} </Button> */}
-            {/* <div className='icon-container'>
-                <i className='pi pi-thumbs-up' onClick={() => setIconActive(!iconActive)}> {iconActive ? null : this} </i>
-                <i className='pi pi-thumbs-up-fill'onClick={like_count}> {like} </i>
-            </div> */}
 
+        <div>
             <Button onClick={handleClick} severity="danger" style={{background: 'black', border: 'black', color:'rgba(255, 192, 203, 1)'}}>
                 {likeClicked ? <i className='pi pi-thumbs-up-fill' > {like} </i> :  
                                 <i className='pi pi-thumbs-up' > {like} </i>}
@@ -85,12 +131,19 @@ const Detail = () => {
             </Button>
             
         </div>
-            <br/><br/><br/>
+
+            <br/>
+
         {visible ?
             <div>
-                ...
+                <Comment comment = {commentsData}
+                    // handleInsertNode={handleInsertNode}
+                    // handleDelete={handleDelete}
+                    // handleEditNode={handleEditNode}
+                />
             </div>
         :null}
+        <br/><br/><br/>
     </div>
     )
 };

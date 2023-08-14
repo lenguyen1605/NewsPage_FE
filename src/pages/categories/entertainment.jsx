@@ -35,7 +35,7 @@ const Entertainment = () => {
 
   return (
     <div className="row">
-            {allPosts.map((post,idx)=>{
+            {allPosts?.map((post,idx)=>{
                 return (
                     <div className='column' style={{display: 'flex', minHeight: '750px'}}>
                         <Card title={post?.title} subTitle={`${post?.author_name}` +" "+ `${dateconverter(post?.date_created)}`} 

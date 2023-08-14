@@ -123,12 +123,71 @@
     .fonthead {
         font-size: 20px;
     }
+    .commentButton {
+      overflow: hidden
+    }
   }
 
+  /* comment section styles */
+  .commentContainer {
+    margin-top: 10px;
+    background-color: #FFE4E1;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 10px;
+    width: 70%;
+    height: 35px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
 
+  .commentContainer:hover{
+    background-color: #d3d3d3bf;
+  }
 
+  .inputContainer {
+    display:flex;
+    align-items: baseline;
+    gap:5px;
+  }
 
+  .inputContainer_input{
+    margin: 6px 0 0px 0;
+    padding:5px;
+    display:flex;
+    border: 1px solid lightgray;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #e7e7e7;
+  }
 
+  .first_input {
+    margin: 0
+  }
+  .commentContainer > span {
+    margin: 0 5px;
+  }
+
+  .reply {
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 5px;
+    color: #4e4e4e;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .comment {
+    color: #ffffff;
+    background-color: #569dff;
+    letter-spacing: 0.8px;
+  }
+
+  .input:disabled{
+    color: black;
+  }
 
 
 
