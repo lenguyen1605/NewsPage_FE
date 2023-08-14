@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import MainHeader from './pages/header';
-import Detail from './pages/postdetail';
+import Detail from './post/postdetail';
 import { BrowserRouter } from 'react-router-dom';
 import { Route, Routes } from "react-router-dom";
 
